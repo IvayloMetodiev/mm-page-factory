@@ -1,9 +1,13 @@
-<suite name="Test-method Suite" parallel="methods" thread-count="2" >
-    <TestNG.test name="Test-method TestNG.test" group-by-instances="true">
+<suite name="Test-method Suite" parallel="methods" thread-count="1" >
+    <listeners>
+        <listener class-name="com.mentormate.common.AnnotationTransformer"/>
+    </listeners>
+    <test name="Test-method test" group-by-instances="true">
         <classes>
             <class name="mentorMatePageFactory.LandingPageTest"/>
             <class name="mentorMatePageFactory.LoginTest">
+            <class name="mentorMatePageFactory.UploadImageTest"/>
             </class>
         </classes>
-    </TestNG.test>
+    </test>
 </suite>
