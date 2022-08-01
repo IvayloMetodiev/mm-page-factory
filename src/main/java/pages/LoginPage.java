@@ -1,4 +1,4 @@
-package com.mentormate;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,16 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage {
-
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions actions;
+public class LoginPage extends BasePage{
 
     @FindBy(xpath = "//p[@class='h4 mb-4']")
     WebElement signInText;
 
-    @FindBy(xpath = "//input[@class='form-control mb-4 ng-pristine ng-invalid ng-touched']")
+    @FindBy(css = "#defaultLoginFormUsername")
     WebElement usernameOrEmailInput;
 
     @FindBy(xpath = "//input[@id='defaultLoginFormPassword']")
@@ -34,15 +30,9 @@ public class LoginPage {
     WebElement registerBtn;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        actions = new Actions(driver);
+        super(driver);
 
         driver.get("http://training.skillo-bg.com/users/login");
-
         PageFactory.initElements(driver, this);
     }
 
@@ -84,23 +74,23 @@ public class LoginPage {
     //Init web elements methods
 
     public void fillUsername(String username){
-        usernameOrEmailInput.click();
+        click(usernameOrEmailInput);
         usernameOrEmailInput.clear();
         usernameOrEmailInput.sendKeys(username);
     }
 
     public void fillPassword(String password){
-        passwordInput.click();
+        click(passwordInput);
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
     public void rememberMeOn(){
-        rememberMeCheckBox.click();
+        click(rememberMeCheckBox);
     }
 
     public void signUpBtnClick(){
-        signInBtn.click();
+        click(signInBtn);
     }
 
     public void fullLoginRememberMeOn(String username,String password){
