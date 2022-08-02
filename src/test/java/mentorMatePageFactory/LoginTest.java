@@ -33,17 +33,22 @@ public class LoginTest extends BaseTest {
         }
     }
 
+//    (retryAnalyzer = RetryAnalyzer.class)
 
-    @Test (retryAnalyzer = RetryAnalyzer.class)
+    @Test (dependsOnMethods = {"mentorMatePageFactory.SignUpTest.signUpTest"})
     public void testLogin() {
 
         Assert.assertTrue(loginPage.isSignUpTextDisplayed());
         Assert.assertTrue(loginPage.isUsernameOrEmailInputDisplayed());
 
 
-        loginPage.fullLoginRememberMeOff("ivaylo123", defaultPassword);
+        String getGeneratedUser = super.getUsername();
 
-        Assert.assertTrue(homePage.areAllElementsDisplayed());
+        System.out.println(getGeneratedUser);
+
+//        loginPage.fullLoginRememberMeOff(getGeneratedUser, defaultPassword);
+//
+//        Assert.assertTrue(homePage.areAllElementsDisplayed());
 
     }
 

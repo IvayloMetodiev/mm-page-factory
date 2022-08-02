@@ -17,6 +17,7 @@ public class LandingPageTest extends BaseTest {
     @Test
     public void testOpenHomePage() {
 
+        landingPage.openLandingPage();
         Assert.assertTrue(landingPage.isLoginBtnDisplayed());
 
 

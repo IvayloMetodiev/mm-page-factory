@@ -73,6 +73,10 @@ public class LoginPage extends BasePage{
 
     //Init web elements methods
 
+    public void clickRegisterBtn(){
+        click(registerBtn);
+    }
+
     public void fillUsername(String username){
         click(usernameOrEmailInput);
         usernameOrEmailInput.clear();
@@ -105,6 +109,5 @@ public class LoginPage extends BasePage{
         fillPassword(password);
         signUpBtnClick();
     }
-
 
 }

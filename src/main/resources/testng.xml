@@ -5,8 +5,10 @@
     <test name="Test-method test" group-by-instances="true">
         <classes>
             <class name="mentorMatePageFactory.LandingPageTest"/>
-            <class name="mentorMatePageFactory.LoginTest">
+            <class name="mentorMatePageFactory.LoginTest"/>
             <class name="mentorMatePageFactory.UploadImageTest"/>
+            <class name="mentorMatePageFactory.SignUpTest"/>
+            <class name="mentorMatePageFactory.BaseTest">
             </class>
         </classes>
     </test>
