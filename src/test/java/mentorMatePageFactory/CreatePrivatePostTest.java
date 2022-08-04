@@ -4,30 +4,14 @@ import com.mentormate.common.Screenshot;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.LoginPage;
 import pages.ProfilePage;
 import pages.UploadImagePage;
 
-public class UploadImageTest extends BaseTest {
+public class CreatePrivatePostTest extends BaseTest {
 
-    LoginPage loginPage;
-    HomePage homePage;
-    UploadImagePage uploadImagePage;
-    ProfilePage profilePage;
-
-    String filePath = "C:\\Users\\Ivaylo Metodiev\\IdeaProjects\\PageFactorySkillo\\src\\main\\resources\\cat.jpg";
+    String filePath = "C:\\Users\\ivaylo.metodiev\\IdeaProjects\\mm-page-factory\\src\\main\\resources\\cat.jpg";
     String caption = "Testing caption 123 !@#$%%$";
-
-
-    @BeforeMethod
-    public void SetUp() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-//        uploadImagePage = new UploadImagePage(driver);
-    }
 
     @AfterMethod
     public void tearDown(ITestResult result) {
@@ -36,10 +20,10 @@ public class UploadImageTest extends BaseTest {
         }
     }
 
-    @Test
+    @Test(dependsOnMethods = {"mentorMatePageFactory.SignUpTest.signUpTest"})
     public void uploadImageTest() {
 
-        loginPage.fullLoginRememberMeOff("ivaylo123", "Qwerty1");
+        loginPage.fullLoginRememberMeOff(getUsername(), defaultPassword);
 
         homePage.clickNewPostBtn();
 
@@ -47,10 +31,11 @@ public class UploadImageTest extends BaseTest {
 
         Assert.assertTrue(uploadImagePage.areAllElementsVisible());
 
-        uploadImagePage.createPublicPost(filePath, caption);
+        uploadImagePage.createPrivatePost(filePath, caption);
 
         profilePage = new ProfilePage(driver);
 
+        Assert.assertTrue(profilePage.isGalleryDisplayed());
         Assert.assertTrue(profilePage.areAllElementsDisplayed());
     }
 

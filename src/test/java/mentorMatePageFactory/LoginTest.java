@@ -13,19 +13,6 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    LoginPage loginPage;
-    HomePage homePage;
-
-    String defaultPassword = "Qwerty1";
-
-
-    @BeforeMethod
-    public void SetUp() {
-        loginPage = new LoginPage(driver);
-        homePage = new HomePage(driver);
-
-    }
-
     @AfterMethod
     public void tearDown(ITestResult result) {
         if (!result.isSuccess()) {
@@ -33,15 +20,19 @@ public class LoginTest extends BaseTest {
         }
     }
 
+//
 
-    @Test (retryAnalyzer = RetryAnalyzer.class)
+    @Test (dependsOnMethods = {"mentorMatePageFactory.SignUpTest.signUpTest"}, retryAnalyzer = RetryAnalyzer.class)
     public void testLogin() {
+
 
         Assert.assertTrue(loginPage.isSignUpTextDisplayed());
         Assert.assertTrue(loginPage.isUsernameOrEmailInputDisplayed());
 
 
-        loginPage.fullLoginRememberMeOff("ivaylo123", defaultPassword);
+        String getGeneratedUser = super.getUsername();
+
+        loginPage.fullLoginRememberMeOff(getGeneratedUser, defaultPassword);
 
         Assert.assertTrue(homePage.areAllElementsDisplayed());
 

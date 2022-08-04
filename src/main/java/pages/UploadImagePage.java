@@ -9,27 +9,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class UploadImagePage extends BasePage {
 
-    @FindBy (xpath = "//div[@class='uploadfilecontainer']")
+    @FindBy(xpath = "//div[@class='uploadfilecontainer']")
     WebElement dragAndDropContainer;
 
-    @FindBy (css = "#choose-file")
+    @FindBy(css = "#choose-file")
     WebElement browseBtn;
 
-    @FindBy (xpath = "//label[@class='post-status-label custom-control-label active']")
+    @FindBy(xpath = "//label[@class='post-status-label custom-control-label active']")
     WebElement publicPrivetToggle;
 
-    @FindBy (xpath = "//input[@name='caption']")
+    @FindBy(xpath = "//input[@name='caption']")
     WebElement captionInputField;
 
-    @FindBy (xpath = "//input[@class='file ng-untouched ng-pristine ng-invalid']")
+    @FindBy(xpath = "//input[@class='file ng-untouched ng-pristine ng-invalid']")
     WebElement filePathField;
 
-    @FindBy (css = "#create-post")
+    @FindBy(css = "#create-post")
     WebElement submitBtn;
 
 //    @FindBy (xpath = "//div[@class='file-preview']")
 //    WebElement uploadedImagePreview;
-
 
 
     public UploadImagePage(WebDriver driver) {
@@ -40,28 +39,28 @@ public class UploadImagePage extends BasePage {
     }
 
     //Verification Methods
-    public boolean isDragAndDropContainerDisplayed(){
+    public boolean isDragAndDropContainerDisplayed() {
         return dragAndDropContainer.isDisplayed();
     }
 
-    public boolean isBrowseBtnDisplayed(){
+    public boolean isBrowseBtnDisplayed() {
         return browseBtn.isDisplayed();
     }
 
-    public boolean isPublicPrivetToggleDisplayed(){
+    public boolean isPublicPrivetToggleDisplayed() {
         return publicPrivetToggle.isDisplayed();
     }
 
-    public boolean isCaptionFiledDisplayed(){
+    public boolean isCaptionFiledDisplayed() {
         click(captionInputField);
         return captionInputField.isDisplayed();
     }
 
-    public boolean isSubmitBtnDisplayed(){
+    public boolean isSubmitBtnDisplayed() {
         return submitBtn.isDisplayed();
     }
 
-    public boolean areAllElementsVisible(){
+    public boolean areAllElementsVisible() {
         return isSubmitBtnDisplayed() &&
                 isCaptionFiledDisplayed() &&
                 isPublicPrivetToggleDisplayed() &&
@@ -70,22 +69,19 @@ public class UploadImagePage extends BasePage {
     }
 
     //Init Methods
-    public void createPublicPost(String imagePath, String caption){
+    public void createPublicPost(String imagePath, String caption) {
         filePathField.sendKeys(imagePath);
         click(captionInputField);
         captionInputField.sendKeys(caption);
         click(submitBtn);
     }
 
-    public void createPrivatePost(String imagePath){
+    public void createPrivatePost(String imagePath, String caption) {
         filePathField.sendKeys(imagePath);
         click(publicPrivetToggle);
+        captionInputField.sendKeys(caption);
         click(submitBtn);
     }
-
-
-
-
 
 
 }
