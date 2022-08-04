@@ -18,6 +18,9 @@ public class LandingPage extends BasePage {
     @FindBy(xpath = "//a[@id='nav-link-login']")
     WebElement loginBtn;
 
+    @FindBy(css = "#nav-link-home")
+    WebElement homeBtn;
+
     public LandingPage(WebDriver driver) {
         super(driver);
 
@@ -25,16 +28,6 @@ public class LandingPage extends BasePage {
 
         PageFactory.initElements(driver, this);
     }
-
-//    public LandingPage(WebDriver driver) {
-//        this.driver = driver;
-//
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-//        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//        actions = new Actions(driver);
-
-
 
 
     //Init web elements methods
@@ -49,6 +42,15 @@ public class LandingPage extends BasePage {
     //Verification Methods
     public boolean isLoginBtnDisplayed() {
         return loginBtn.isDisplayed();
+    }
+
+    public boolean isHomeBtnDisplayed(){
+        return homeBtn.isDisplayed();
+    }
+
+    public boolean areAllElementsDisplayed(){
+        return isLoginBtnDisplayed() &&
+                isHomeBtnDisplayed();
     }
 
 

@@ -107,5 +107,9 @@ public class HomePage extends BasePage{
         click(newPostBtn);
     }
 
+    public void clickLogoutBtn(){
+        click(logoutBtn);
+    }
+
 
 }

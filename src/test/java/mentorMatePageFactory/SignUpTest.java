@@ -10,24 +10,13 @@ import pages.SignUpPage;
 
 import java.security.SecureRandom;
 
-public class SignUpTest extends BaseTest {
-
-    LandingPage landingPage;
-    LoginPage loginPage;
-    SignUpPage signUpPage;
-    HomePage homePage;
-
-    @BeforeMethod
-    public void setUpSignUp() {
-        landingPage = new LandingPage(driver);
-        loginPage = new LoginPage(driver);
-        signUpPage = new SignUpPage(driver);
-        homePage = new HomePage(driver);
-    }
-
+public class SignUpTest extends BaseTest { ;
 
     @Test
     public void signUpTest() {
+
+        setUsername();
+        System.out.println(getUsername());
 
         landingPage.openLandingPage();
         landingPage.loginBtnClick();
@@ -37,7 +26,8 @@ public class SignUpTest extends BaseTest {
 
         signUpPage.areAllElementsDisplayed();
 
-        super.setUsername("ivo");
+
+        super.setUsername();
         String email = username + "@test.tt";
         String password = "Qwerty1";
 

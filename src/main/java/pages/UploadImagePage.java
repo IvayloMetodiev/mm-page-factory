@@ -76,9 +76,10 @@ public class UploadImagePage extends BasePage {
         click(submitBtn);
     }
 
-    public void createPrivatePost(String imagePath) {
+    public void createPrivatePost(String imagePath, String caption) {
         filePathField.sendKeys(imagePath);
         click(publicPrivetToggle);
+        captionInputField.sendKeys(caption);
         click(submitBtn);
     }
 

@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import pages.*;
 
 import java.security.SecureRandom;
 
@@ -15,19 +16,26 @@ public class BaseTest {
     SecureRandom random;
 
     // User generator
-    String username;
+    public static String username;
+    public static String defaultPassword = "Qwerty1";
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername() {
         random = new SecureRandom();
         int randomInt = random.nextInt(1000);
-        this.username = username + String.valueOf(randomInt);
+        this.username = "ivo" + String.valueOf(randomInt);
     }
 
-
+    BasePage basePage;
+    HomePage homePage;
+    LandingPage landingPage;
+    LoginPage loginPage;
+    ProfilePage profilePage;
+    SignUpPage signUpPage;
+    UploadImagePage uploadImagePage;
 
     @BeforeClass
     public void setUp() {
@@ -37,6 +45,17 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+
+
+        basePage = new BasePage(driver);
+        homePage = new HomePage(driver);
+        landingPage = new LandingPage(driver);
+        loginPage = new LoginPage(driver);
+        profilePage = new ProfilePage(driver);
+        signUpPage = new SignUpPage(driver);
+        uploadImagePage = new UploadImagePage(driver);
+
+
     }
 
     @AfterClass
@@ -45,4 +64,7 @@ public class BaseTest {
     }
 
 
+    public static void main(String[] args) {
+        System.out.println();
+    }
 }

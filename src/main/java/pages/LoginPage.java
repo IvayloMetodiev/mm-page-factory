@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//p[@class='h4 mb-4']")
     WebElement signInText;
@@ -38,73 +38,73 @@ public class LoginPage extends BasePage{
 
     //Verification methods
 
-    public boolean isSignUpTextDisplayed(){
+    public boolean isSignUpTextDisplayed() {
         return signInText.isDisplayed();
     }
 
-    public boolean isUsernameOrEmailInputDisplayed(){
+    public boolean isUsernameOrEmailInputDisplayed() {
         return usernameOrEmailInput.isDisplayed();
     }
 
-    public boolean isPasswordInputDisplayed(){
+    public boolean isPasswordInputDisplayed() {
         return passwordInput.isDisplayed();
     }
 
-    public boolean isRememberMeCheckboxDisplayed(){
+    public boolean isRememberMeCheckboxDisplayed() {
         return rememberMeCheckBox.isDisplayed();
     }
 
-    public boolean isSignInBtnDisplayed(){
+    public boolean isSignInBtnDisplayed() {
         return signInBtn.isDisplayed();
     }
 
-    public boolean isRegisterBtnDisplayed(){
+    public boolean isRegisterBtnDisplayed() {
         return registerBtn.isDisplayed();
     }
 
-    public boolean areAllLoginPageElementsDisplayed(){
-    return isSignUpTextDisplayed() &&
-            isUsernameOrEmailInputDisplayed() &&
-            isPasswordInputDisplayed() &&
-            isRememberMeCheckboxDisplayed() &&
-            isSignInBtnDisplayed() &&
-            isRegisterBtnDisplayed();
+    public boolean areAllLoginPageElementsDisplayed() {
+        return isSignUpTextDisplayed() &&
+                isUsernameOrEmailInputDisplayed() &&
+                isPasswordInputDisplayed() &&
+                isRememberMeCheckboxDisplayed() &&
+                isSignInBtnDisplayed() &&
+                isRegisterBtnDisplayed();
     }
 
     //Init web elements methods
 
-    public void clickRegisterBtn(){
+    public void clickRegisterBtn() {
         click(registerBtn);
     }
 
-    public void fillUsername(String username){
+    public void fillUsername(String username) {
         click(usernameOrEmailInput);
         usernameOrEmailInput.clear();
         usernameOrEmailInput.sendKeys(username);
     }
 
-    public void fillPassword(String password){
+    public void fillPassword(String password) {
         click(passwordInput);
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
-    public void rememberMeOn(){
+    public void rememberMeOn() {
         click(rememberMeCheckBox);
     }
 
-    public void signUpBtnClick(){
+    public void signUpBtnClick() {
         click(signInBtn);
     }
 
-    public void fullLoginRememberMeOn(String username,String password){
+    public void fullLoginRememberMeOn(String username, String password) {
         fillUsername(username);
         fillPassword(password);
         rememberMeOn();
         signUpBtnClick();
     }
 
-    public void fullLoginRememberMeOff(String username,String password){
+    public void fullLoginRememberMeOff(String username, String password) {
         fillUsername(username);
         fillPassword(password);
         signUpBtnClick();
